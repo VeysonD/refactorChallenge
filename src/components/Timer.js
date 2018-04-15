@@ -1,26 +1,41 @@
 import React, { Component } from 'react';
 
 class Timer extends Component {
-  state = { count: 0 }
-  timer = null;
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+      timer: null,
+    };
+    this.updateTimer = this.updateTimer.bind(this);
+  }
 
-  updateTimer = () => {
+  componentDidMount() {
     this.setState({
-      count: this.state.count += 1,
+      timer: setInterval(this.updateTimer, 1000),
     });
   }
 
-  componentDidMount = () => {
-    const that = this;
-    that.timer = setInterval(that.updateTimer, 1000);
+  componentWillUnmount() {
+    clearInterval(this.state.timer);
   }
 
-  render = () => (
-    <div>
-      <h2>Seconds so Far:</h2>
-      <p>{this.state.count}</p>
-    </div>
-  )
+  updateTimer() {
+    let { count } = this.state;
+    this.setState({
+      count: count += 1,
+    });
+  }
+
+  render() {
+    const { count } = this.state;
+    return (
+      <div>
+        <h2>Seconds so Far:</h2>
+        <p>{count}</p>
+      </div>
+    );
+  }
 }
 
 export default Timer;
