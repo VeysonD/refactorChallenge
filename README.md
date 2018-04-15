@@ -14,7 +14,7 @@ he did things correctly.  Can you take a look over the codebase and refactor
 it to how you think a React app should be?
 
 You can do whatever you think is best:
-install libraries, add/remove/reorganize files, etc. 
+install libraries, add/remove/reorganize files, etc.
 Just use your best judgment to help us in making the code better and easier to maintain.
 
 Notes:
@@ -27,3 +27,5 @@ Notes:
 - Again, **don't worry about styling or CSS**. Just focus on JavaScript and React.
 
 - Feel free to add notes your cloned repo to explain your thought process.
+
+## Dev Notes
