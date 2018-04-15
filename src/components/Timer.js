@@ -5,19 +5,17 @@ class Timer extends Component {
     super(props);
     this.state = {
       count: 0,
-      timer: null,
     };
+    this.interval = null;
     this.updateTimer = this.updateTimer.bind(this);
   }
 
   componentDidMount() {
-    this.setState({
-      timer: setInterval(this.updateTimer, 1000),
-    });
+    this.interval = setInterval(this.updateTimer, 1000);
   }
 
   componentWillUnmount() {
-    clearInterval(this.state.timer);
+    clearInterval(this.interval);
   }
 
   updateTimer() {
