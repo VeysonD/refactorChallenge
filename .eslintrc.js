@@ -6,5 +6,6 @@ module.exports = {
     "node": true,
   },
   "rules": {
+    "react/jsx-filename-extension": "off",
   }
 }

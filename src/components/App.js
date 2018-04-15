@@ -1,14 +1,14 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import moment from 'moment';
 
 import TodoForm from './TodoForm';
 import TodoHeader from './TodoHeader';
 import TodoList from './TodoList';
 import Timer from './Timer';
-import "./../stylings/App.css";
+import './../stylings/App.css';
 
 
-class TodoApp extends React.Component {
+class TodoApp extends Component {
   constructor(props) {
     super(props);
     this.addItem = this.addItem.bind(this);
@@ -18,29 +18,29 @@ class TodoApp extends React.Component {
   }
 
   addItem(todoItem) {
-    var todoItems = this.state.todoItems;
+    const todoItems = this.state.todoItems;
     todoItems.unshift({
       index: todoItems.length + 1,
       value: todoItem.newItemValue,
-      date: moment().format("ll"),
-      done: false
+      date: moment().format('ll'),
+      done: false,
     });
-    this.setState({ todoItems: todoItems });
+    this.setState({ todoItems });
   }
 
   removeItem(itemIndex) {
-    var todoItems = this.state.todoItems;
+    const todoItems = this.state.todoItems;
     todoItems.splice(itemIndex, 1);
-    this.setState({ todoItems: todoItems });
+    this.setState({ todoItems });
   }
 
   markTodoDone(itemIndex) {
     const todoItems = this.state.todoItems;
-    var todo = todoItems[itemIndex];
+    const todo = todoItems[itemIndex];
     todoItems.splice(itemIndex, 1);
     todo.done = !todo.done;
     todo.done ? todoItems.push(todo) : todoItems.unshift(todo);
-    this.setState({ todoItems: todoItems });
+    this.setState({ todoItems });
   }
 
   render() {
@@ -63,7 +63,6 @@ class TodoApp extends React.Component {
     );
   }
 }
-
 
 
 export default TodoApp;

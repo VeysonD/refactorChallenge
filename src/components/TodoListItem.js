@@ -8,15 +8,15 @@ class TodoListItem extends Component {
     this.onClickDone = this.onClickDone.bind(this);
   }
   onClickClose() {
-    var index = parseInt(this.props.index);
+    const index = parseInt(this.props.index);
     this.props.removeItem(index);
   }
   onClickDone() {
-    var index = parseInt(this.props.index);
+    const index = parseInt(this.props.index);
     this.props.markTodoDone(index);
   }
   render() {
-    var todoClass = this.props.item.done ? "todoItem done" : "todoItem undone";
+    const todoClass = this.props.item.done ? 'todoItem done' : 'todoItem undone';
     return (
       <li className="list-group-item ">
         <div className={todoClass}>
@@ -26,7 +26,7 @@ class TodoListItem extends Component {
             onClick={this.onClickDone}
           />
           <span>{this.props.item.value}</span>
-          <span class='date'>{`Added: ${this.props.item.date}`}</span>
+          <span className="date">{`Added: ${this.props.item.date}`}</span>
           <button type="button" className="close" onClick={this.onClickClose}>
             &times;
           </button>

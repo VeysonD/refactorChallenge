@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class TodoForm extends React.Component {
+class TodoForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
