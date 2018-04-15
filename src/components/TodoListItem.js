@@ -45,7 +45,7 @@ TodoListItem.propTypes = {
     value: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
     done: PropTypes.bool.isRequired,
-  }),
+  }).isRequired,
 };
 
 export default TodoListItem;
