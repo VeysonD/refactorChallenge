@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import moment from "moment";
 import "./App.css";
-import jquery from 'jquery';
-const $ = window.$ = window.jQuery = jquery;
 
-class TodoList extends React.Component {
+class TodoList extends Component {
   render() {
     var items = this.props.items.map((item, index) => {
       return (
@@ -21,7 +19,7 @@ class TodoList extends React.Component {
   }
 }
 
-class TodoListItem extends React.Component {
+class TodoListItem extends Component {
   constructor(props) {
     super(props);
     this.onClickClose = this.onClickClose.bind(this);
@@ -59,20 +57,27 @@ class TodoListItem extends React.Component {
 class TodoForm extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      todo: '',
+    };
+    this.handleChange = this.handleChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-  }
-  componentDidMount() {
-    $("#itemName").focus();
   }
   onSubmit(event) {
     event.preventDefault();
-    var newItemValue = $("#itemName").val();
+    const newItemValue = this.state.todo;
 
-    if (newItemValue) {
+    if (this.state.todo.length > 0) {
       this.props.addItem({ newItemValue });
-      $('#todoForm').trigger("reset");
+      event.target.reset();
     }
   }
+  handleChange(event) {
+    this.setState({
+      todo: event.target.value,
+    });
+  }
+
   render() {
     return (
       <form ref="form" id="todoForm" onSubmit={this.onSubmit} className="form-inline">
@@ -80,6 +85,7 @@ class TodoForm extends React.Component {
           type="text"
           id="itemName"
           className="form-control"
+          onChange={this.handleChange}
           placeholder="add a new todo..."
         />
         <button type="submit" className="btn btn-default">
@@ -90,7 +96,7 @@ class TodoForm extends React.Component {
   }
 }
 
-class Timer extends React.Component {
+class Timer extends Component {
   state = {count: 0}
   timer = null;
 
