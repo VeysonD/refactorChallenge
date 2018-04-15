@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class TodoForm extends Component {
   constructor(props) {
@@ -13,8 +14,11 @@ class TodoForm extends Component {
     event.preventDefault();
     const newItemValue = this.state.todo;
 
-    if (this.state.todo.length > 0) {
+    if (newItemValue.length > 0) {
       this.props.addItem({ newItemValue });
+      this.setState({
+        todo: '',
+      });
       event.target.reset();
     }
   }
@@ -26,7 +30,7 @@ class TodoForm extends Component {
 
   render() {
     return (
-      <form ref="form" id="todoForm" onSubmit={this.onSubmit} className="form-inline">
+      <form id="todoForm" onSubmit={this.onSubmit} className="form-inline">
         <input
           type="text"
           id="itemName"
@@ -41,5 +45,9 @@ class TodoForm extends Component {
     );
   }
 }
+
+TodoForm.propTypes = {
+  addItem: PropTypes.func.isRequired,
+};
 
 export default TodoForm;
