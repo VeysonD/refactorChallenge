@@ -6,6 +6,7 @@ module.exports = {
     "node": true,
   },
   "rules": {
-    "react/jsx-filename-extension": "off",
+    "react/jsx-filename-extension": 0,
+    "react/no-did-mount-set-state": 0,
   }
 }

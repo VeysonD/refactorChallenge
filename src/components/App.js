@@ -18,9 +18,10 @@ class TodoApp extends Component {
   }
 
   addItem(todoItem) {
-    const todoItems = this.state.todoItems;
+    const { todoItems, length } = this.state;
+
     todoItems.unshift({
-      index: todoItems.length + 1,
+      index: length + 1,
       value: todoItem.newItemValue,
       date: moment().format('ll'),
       done: false,
@@ -29,17 +30,23 @@ class TodoApp extends Component {
   }
 
   removeItem(itemIndex) {
-    const todoItems = this.state.todoItems;
+    const { todoItems } = this.state;
+
     todoItems.splice(itemIndex, 1);
     this.setState({ todoItems });
   }
 
   markTodoDone(itemIndex) {
-    const todoItems = this.state.todoItems;
+    const { todoItems } = this.state;
     const todo = todoItems[itemIndex];
+
     todoItems.splice(itemIndex, 1);
     todo.done = !todo.done;
-    todo.done ? todoItems.push(todo) : todoItems.unshift(todo);
+    if (todo.done) {
+      todoItems.push(todo);
+    } else {
+      todoItems.unshift(todo);
+    }
     this.setState({ todoItems });
   }
 
