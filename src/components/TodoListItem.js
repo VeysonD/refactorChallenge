@@ -16,7 +16,9 @@ class TodoListItem extends Component {
     this.props.markTodoDone(index);
   }
   render() {
-    const todoClass = this.props.item.done ? 'todoItem done' : 'todoItem undone';
+    const { item } = this.props;
+    const todoClass = item.done ? 'todoItem done' : 'todoItem undone';
+    
     return (
       <li className="list-group-item ">
         <div className={todoClass}>
@@ -25,8 +27,8 @@ class TodoListItem extends Component {
             aria-hidden="true"
             onClick={this.onClickDone}
           />
-          <span>{this.props.item.value}</span>
-          <span className="date">{`Added: ${this.props.item.date}`}</span>
+          <span>{item.value}</span>
+          <span className="date">{`Added: ${item.date}`}</span>
           <button type="button" className="close" onClick={this.onClickClose}>
             &times;
           </button>

@@ -5,26 +5,26 @@ class TodoForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todo: '',
+      newItemvalue: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
   onSubmit(event) {
     event.preventDefault();
-    const newItemValue = this.state.todo;
+    const newItemValue = this.state.newItemValue.trim();
 
     if (newItemValue.length > 0) {
       this.props.addItem({ newItemValue });
       this.setState({
-        todo: '',
+        newItemValue: '',
       });
       event.target.reset();
     }
   }
   handleChange(event) {
     this.setState({
-      todo: event.target.value,
+      newItemValue: event.target.value,
     });
   }
 
