@@ -3,10 +3,17 @@ import PropTypes from 'prop-types';
 
 import TodoListItem from './TodoListItem';
 
+let key = 0;
+
+const generateKey = () => {
+  key += 1;
+  return `todo-${key}`;
+};
+
 const TodoList = (props) => {
   const items = props.items.map((item, index) => (
     <TodoListItem
-      key={item.index}
+      key={generateKey()}
       item={item}
       index={index}
       removeItem={props.removeItem}

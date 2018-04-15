@@ -5,16 +5,20 @@ import TodoForm from './TodoForm';
 import TodoHeader from './TodoHeader';
 import TodoList from './TodoList';
 import Timer from './Timer';
-import './../stylings/App.css';
+import './../styles/App.css';
 
 
 class TodoApp extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      todoItems: [],
+      showTimer: false,
+    };
+
     this.addItem = this.addItem.bind(this);
     this.removeItem = this.removeItem.bind(this);
     this.markTodoDone = this.markTodoDone.bind(this);
-    this.state = { todoItems: [], showTimer: false };
   }
 
   addItem(todoItem) {
