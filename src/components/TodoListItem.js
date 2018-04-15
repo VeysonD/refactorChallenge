@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 
 class TodoListItem extends Component {
   constructor(props) {
@@ -8,11 +8,11 @@ class TodoListItem extends Component {
     this.onClickDone = this.onClickDone.bind(this);
   }
   onClickClose() {
-    const index = parseInt(this.props.index);
+    const index = parseInt(this.props.index, 10);
     this.props.removeItem(index);
   }
   onClickDone() {
-    const index = parseInt(this.props.index);
+    const index = parseInt(this.props.index, 10);
     this.props.markTodoDone(index);
   }
   render() {
@@ -36,5 +36,16 @@ class TodoListItem extends Component {
   }
 }
 
+TodoListItem.propTypes = {
+  index: PropTypes.number.isRequired,
+  markTodoDone: PropTypes.func.isRequired,
+  removeItem: PropTypes.func.isRequired,
+  item: PropTypes.shape({
+    index: PropTypes.number.isRequired,
+    value: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    done: PropTypes.bool.isRequired,
+  }),
+};
 
 export default TodoListItem;
