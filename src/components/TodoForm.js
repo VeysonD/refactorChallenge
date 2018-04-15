@@ -5,7 +5,7 @@ class TodoForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newItemvalue: '',
+      newItemValue: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
